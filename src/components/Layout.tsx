@@ -1,9 +1,8 @@
 import {
-  Bell,
   BriefcaseBusiness,
   Clapperboard,
   Home,
-  LayoutDashboard,
+  MessageCircleMore,
   Search,
   UserRound,
 } from 'lucide-react';
@@ -14,6 +13,7 @@ import { VersionBadge } from './VersionBadge';
 const desktopNavItems = [
   { to: '/actors', label: '找演员' },
   { to: '/roles', label: '找角色' },
+  { to: '/messages', label: '消息' },
   { to: '/dashboard/producer', label: '选角工作台' },
   { to: '/dashboard/actor', label: '演员工作台' },
 ];
@@ -22,7 +22,7 @@ const mobileTabs = [
   { to: '/', label: '首页', icon: Home, end: true },
   { to: '/actors', label: '演员', icon: Search },
   { to: '/roles', label: '角色', icon: BriefcaseBusiness },
-  { to: '/dashboard/actor', label: '工作台', icon: LayoutDashboard },
+  { to: '/messages', label: '消息', icon: MessageCircleMore, badge: 3 },
   { to: '/profile/edit', label: '我的', icon: UserRound },
 ];
 
@@ -48,7 +48,6 @@ export function Layout() {
               <small>CASTLINK</small>
             </span>
           </Link>
-
           <VersionBadge />
 
           <nav className="desktop-nav" aria-label="主导航">
@@ -70,6 +69,9 @@ export function Layout() {
           </form>
 
           <div className="header-actions">
+            <Link to="/messages" className="button button-ghost button-small header-message-link">
+              <MessageCircleMore size={16} />消息<span className="header-message-count">3</span>
+            </Link>
             <Link to="/profile/edit" className="button button-ghost button-small">
               <UserRound size={16} />创建演员卡
             </Link>
@@ -77,9 +79,10 @@ export function Layout() {
 
           <div className="mobile-header-actions">
             <Link to="/actors" className="mobile-header-button" aria-label="搜索演员"><Search size={20} /></Link>
-            <Link to="/dashboard/actor" className="mobile-header-button" aria-label="查看通知">
-              <Bell size={20} />
-              <span className="notification-dot" />
+            <Link to="/messages" className="mobile-message-button" aria-label="打开消息中心">
+              <MessageCircleMore size={19} />
+              <span>消息</span>
+              <strong>3</strong>
             </Link>
           </div>
         </div>
@@ -102,13 +105,13 @@ export function Layout() {
             <strong>演员</strong>
             <Link to="/profile/edit">创建演员卡</Link>
             <Link to="/roles">浏览角色</Link>
-            <Link to="/dashboard/actor">演员工作台</Link>
+            <Link to="/messages">项目沟通</Link>
           </div>
           <div>
             <strong>项目方</strong>
             <Link to="/actors">搜索演员</Link>
             <Link to="/dashboard/producer">选角工作台</Link>
-            <Link to="/roles">发布角色</Link>
+            <Link to="/messages">候选人沟通</Link>
           </div>
           <div>
             <strong>平台</strong>
@@ -124,22 +127,21 @@ export function Layout() {
       </footer>
 
       <nav className="mobile-bottom-nav" aria-label="移动端主导航">
-        {mobileTabs.map(({ to, label, icon: Icon, end }) => (
+        {mobileTabs.map(({ to, label, icon: Icon, end, badge }) => (
           <NavLink
             key={to}
             to={to}
             end={end}
             className={({ isActive }) => isActive ? 'mobile-tab is-active' : 'mobile-tab'}
           >
-            <span className="mobile-tab-icon"><Icon size={21} strokeWidth={isMobilePrimary(label) ? 2.2 : 2} /></span>
+            <span className="mobile-tab-icon">
+              <Icon size={21} strokeWidth={label === '消息' ? 2.3 : 2} />
+              {badge ? <em className="mobile-tab-badge">{badge}</em> : null}
+            </span>
             <small>{label}</small>
           </NavLink>
         ))}
       </nav>
     </div>
   );
-}
-
-function isMobilePrimary(label: string) {
-  return label === '演员' || label === '角色';
 }
