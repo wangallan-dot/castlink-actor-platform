@@ -1,0 +1,44 @@
+export type Actor = {
+  id: string;
+  name: string;
+  englishName: string;
+  gender: '男' | '女';
+  age: number;
+  playingAge: string;
+  height: number;
+  city: string;
+  availability: string;
+  verified: boolean;
+  profileScore: number;
+  tagline: string;
+  bio: string;
+  tags: string[];
+  skills: string[];
+  languages: string[];
+  credits: Array<{ title: string; role: string; year: number; type: string }>;
+  accent: string;
+  gradient: string;
+  initials: string;
+  featured?: boolean;
+};
+
+export type Role = {
+  id: string;
+  title: string;
+  project: string;
+  projectType: string;
+  city: string;
+  shootDate: string;
+  duration: string;
+  pay: string;
+  ageRange: string;
+  gender: '男' | '女' | '不限';
+  tags: string[];
+  summary: string;
+  description: string;
+  requirements: string[];
+  company: string;
+  verified: boolean;
+  postedAt: string;
+  urgent?: boolean;
+};

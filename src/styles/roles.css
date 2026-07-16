@@ -1,0 +1,43 @@
+/* Roles */
+.roles-hero { padding:68px 0; background:#173f33; color:#fff; }
+.roles-hero-grid { display:grid; grid-template-columns:1fr 350px; align-items:center; gap:60px; }
+.roles-hero .eyebrow { color:var(--lime); }
+.roles-hero p { color:rgba(255,255,255,.68); max-width:650px; line-height:1.7; }
+.roles-safety-card { padding:20px; display:flex; gap:14px; align-items:center; border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.08); border-radius:14px; }
+.roles-safety-card svg { color:var(--lime); }
+.roles-safety-card div { display:grid; gap:4px; }
+.roles-safety-card strong { font-size:13px; }
+.roles-safety-card span { font-size:10px; color:rgba(255,255,255,.65); }
+.roles-content { padding-top:34px; padding-bottom:80px; }
+.roles-toolbar { display:grid; grid-template-columns:minmax(0,1fr) 180px 150px; gap:10px; margin-bottom:20px; }
+.roles-directory-grid { grid-template-columns:repeat(2,1fr); }
+.role-detail-grid { display:grid; grid-template-columns:minmax(0,1fr) 330px; gap:24px; align-items:start; }
+.role-detail-main { display:grid; gap:18px; }
+.role-detail-header { background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px; }
+.urgent-badge { color:#9b431f; background:#fff0e9; border-radius:999px; padding:5px 9px; font-size:10px; font-weight:800; }
+.role-detail-header h1 { margin:18px 0 8px; font-size:40px; letter-spacing:-.045em; }
+.detail-project { font-size:13px; }
+.role-detail-facts { display:flex; flex-wrap:wrap; gap:18px; margin:22px 0; color:#68736e; font-size:12px; }
+.role-detail-facts span { display:flex; align-items:center; gap:6px; }
+.requirements-list { display:grid; gap:12px; }
+.requirements-list span { display:flex; align-items:center; gap:9px; color:#5e6964; font-size:13px; }
+.requirements-list svg { color:var(--green); }
+.safety-notice { display:flex; gap:14px; background:#f1f5ef; }
+.safety-notice svg { color:var(--green); flex:0 0 auto; }
+.safety-notice strong { font-size:13px; }
+.safety-notice p { margin:6px 0 0; color:#68736e; font-size:11px; line-height:1.6; }
+.role-apply-card { position:sticky; top:96px; background:#fff; border:1px solid var(--line); border-radius:18px; padding:25px; display:grid; gap:10px; }
+.role-apply-card > span { color:#7e8883; font-size:10px; }
+.role-apply-card > strong { color:var(--green); font-size:25px; }
+.role-apply-card > small { color:#8a938f; font-size:9px; margin-bottom:11px; }
+.apply-divider { height:1px; background:var(--line); margin:10px 0; }
+.apply-company { display:flex; align-items:center; gap:11px; }
+.apply-company > span { width:40px; height:40px; display:grid; place-items:center; border-radius:10px; color:#fff; background:var(--green); }
+.apply-company div { display:grid; gap:3px; }
+.apply-company strong { font-size:12px; }
+.apply-company small { color:#7d8782; font-size:9px; }
+.role-apply-card dl { margin:8px 0 0; display:grid; gap:10px; }
+.role-apply-card dl > div { display:flex; justify-content:space-between; gap:12px; font-size:10px; }
+.role-apply-card dt { color:#84908a; }
+.role-apply-card dd { margin:0; font-weight:600; }
+
