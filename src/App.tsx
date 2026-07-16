@@ -4,6 +4,7 @@ import { ActorDashboard } from './pages/ActorDashboard';
 import { ActorDetailPage } from './pages/ActorDetailPage';
 import { ActorsPage } from './pages/ActorsPage';
 import { HomePage } from './pages/HomePage';
+import { MessagesPage } from './pages/MessagesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { ProducerDashboard } from './pages/ProducerDashboard';
 import { ProfileEditorPage } from './pages/ProfileEditorPage';
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/actors/:actorId" element={<ActorDetailPage />} />
           <Route path="/roles" element={<RolesPage />} />
           <Route path="/roles/:roleId" element={<RoleDetailPage />} />
+          <Route path="/messages" element={<MessagesPage />} />
           <Route path="/dashboard/actor" element={<ActorDashboard />} />
           <Route path="/dashboard/producer" element={<ProducerDashboard />} />
           <Route path="/profile/edit" element={<ProfileEditorPage />} />
