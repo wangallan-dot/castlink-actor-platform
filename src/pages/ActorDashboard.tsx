@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom';
 export function ActorDashboard() {
   return (
     <section className="dashboard-page">
-      <div className="container dashboard-heading"><div><span className="eyebrow">演员工作台</span><h1>晚上好，周林</h1><p>你的演员卡本周被查看了 37 次。</p></div><Link to="/profile/edit" className="button button-primary">编辑演员卡</Link></div>
+      <div className="container dashboard-heading"><div><span className="eyebrow">申请与试镜</span><h1>申请进度</h1><p>集中查看剧组邀请、申请记录和试镜截止时间。</p></div><Link to="/profile/edit" className="button button-primary">编辑演员卡</Link></div>
       <div className="container dashboard-grid">
         <div className="dashboard-main">
           <div className="metric-grid">
-            {[['本周曝光', '37', '+18%', Eye], ['收到收藏', '8', '+3', Sparkles], ['试镜邀请', '3', '2条待回复', Bell], ['角色申请', '6', '1条有进展', FileVideo]].map(([label, value, note, Icon]) => (
+            {[['待回复邀请', '2', '今天处理', Bell], ['已申请招募', '6', '1条有进展', FileVideo], ['试镜任务', '3', '1个将截止', Eye], ['收藏招募', '8', '+3', Sparkles]].map(([label, value, note, Icon]) => (
               <article className="metric-card" key={String(label)}><span className="metric-icon"><Icon size={19} /></span><div><small>{label as string}</small><strong>{value as string}</strong><em>{note as string}</em></div></article>
             ))}
           </div>
           <section className="dashboard-card">
-            <div className="dashboard-card-heading"><div><h2>待处理邀请</h2><p>请在截止时间前回复项目方。</p></div><button type="button">查看全部</button></div>
+            <div className="dashboard-card-heading"><div><h2>待处理事项</h2><p>请在剧组招募或试镜截止时间前完成处理。</p></div><button type="button">查看全部</button></div>
             <div className="invite-list">
               {[
                 ['《沉默证词》', '顾沉｜刑警队长', '深蓝影业', '明天 18:00截止', '提交试镜'],
@@ -25,7 +25,7 @@ export function ActorDashboard() {
             </div>
           </section>
           <section className="dashboard-card">
-            <div className="dashboard-card-heading"><div><h2>试镜进度</h2><p>最近提交的角色申请和反馈状态。</p></div></div>
+            <div className="dashboard-card-heading"><div><h2>申请与试镜进度</h2><p>最近提交的角色申请和反馈状态。</p></div></div>
             <div className="pipeline-list">
               {[
                 ['《晚风来信》· 品牌策划', '导演复看', '2026.07.14提交', 3],

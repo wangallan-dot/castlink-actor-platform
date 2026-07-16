@@ -13,7 +13,7 @@ const columns = [
 export function ProducerDashboard() {
   return (
     <section className="dashboard-page producer-dashboard">
-      <div className="container dashboard-heading"><div><span className="eyebrow">选角工作台</span><h1>《沉默证词》</h1><p>深蓝影业 · 6个角色正在选角 · 团队成员5人</p></div><div className="dashboard-heading-actions"><Link to="/actors" className="button button-secondary"><Search size={17} />搜索演员</Link><button type="button" className="button button-primary">发布新角色</button></div></div>
+      <div className="container dashboard-heading"><div><span className="eyebrow">招募管理</span><h1>《沉默证词》</h1><p>深蓝影业 · 6条剧组招募进行中 · 团队成员5人</p></div><div className="dashboard-heading-actions"><Link to="/actors" className="button button-secondary"><Search size={17} />搜索演员</Link><button type="button" className="button button-primary">发布剧组招募</button></div></div>
       <div className="container producer-metrics">
         {[['全部候选人','48',UsersRound],['待处理资料','12',FolderKanban],['已发送试镜','18',Send],['即将截止','3',CalendarClock]].map(([label,value,Icon]) => <article key={String(label)}><span><Icon size={20} /></span><div><small>{label as string}</small><strong>{value as string}</strong></div></article>)}
       </div>
@@ -39,7 +39,7 @@ export function ProducerDashboard() {
       </div>
       <div className="container dashboard-grid producer-bottom-grid">
         <section className="dashboard-card"><div className="dashboard-card-heading"><div><h2>团队动态</h2><p>最近24小时</p></div></div><div className="activity-list">{[['导演 王珂','将周林移动到“导演复看”','12分钟前'],['选角导演 李然','为余晴添加评分 4.6','1小时前'],['制片 张茜','更新角色拍摄日期','3小时前'],['系统','收到陈牧的试镜视频','昨天']].map(([name,action,time]) => <div key={action}><span>{name.slice(-1)}</span><p><strong>{name}</strong>{action}</p><em>{time}</em></div>)}</div></section>
-        <section className="dashboard-card"><div className="dashboard-card-heading"><div><h2>角色进度</h2><p>6个角色</p></div></div><div className="role-progress-list">{[['顾沉｜刑警队长',42],['林瑶｜法医',68],['周启明｜记者',25],['王局｜领导',86]].map(([title,value]) => <div key={String(title)}><div><strong>{title as string}</strong><span>{value as number}%</span></div><div className="score-track"><i style={{ width: `${value}%` }} /></div></div>)}</div></section>
+        <section className="dashboard-card"><div className="dashboard-card-heading"><div><h2>招募进度</h2><p>6条招募</p></div></div><div className="role-progress-list">{[['顾沉｜刑警队长',42],['林瑶｜法医',68],['周启明｜记者',25],['王局｜领导',86]].map(([title,value]) => <div key={String(title)}><div><strong>{title as string}</strong><span>{value as number}%</span></div><div className="score-track"><i style={{ width: `${value}%` }} /></div></div>)}</div></section>
       </div>
     </section>
   );

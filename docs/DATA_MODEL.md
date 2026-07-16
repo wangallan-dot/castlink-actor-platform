@@ -4,7 +4,7 @@
 
 - id
 - phone / email
-- role: actor | producer | agent | admin
+- identity: actor | crew
 - verification_status
 - created_at
 - last_active_at
@@ -14,17 +14,17 @@
 - user_id
 - stage_name
 - legal_name_private
-- english_name
 - gender
 - birth_year
 - playing_age_min / playing_age_max
 - height / weight
 - city
 - work_regions
+- accepts_travel
+- can_stay_on_set
 - biography
 - tagline
 - availability_status
-- agency_status
 - profile_visibility
 - profile_completeness
 
@@ -39,41 +39,23 @@
 - sort_order
 - review_status
 
-## ActorSkill
+## Recruitment
 
-- actor_id
-- skill_id
-- level
-- verified
-- evidence_media_id
-
-## Credit
-
-- actor_id
-- project_title
+- crew_id
+- project_name
 - project_type
-- role_name
-- role_level
-- director
-- company
-- release_year
-- evidence_url
-
-## Project
-
-- owner_organization_id
-- title
-- project_type
-- public_name / confidential_name
-- status
 - city
+- district
+- accepts_non_local_actors
+- provides_accommodation
+- publish_at
+- application_deadline
 - shoot_start / shoot_end
-- confidentiality_level
-- verification_status
+- status: draft | reviewing | open | closing | closed | completed
 
-## CastingRole
+## RecruitmentPosition
 
-- project_id
+- recruitment_id
 - title
 - gender_requirement
 - playing_age_min / playing_age_max
@@ -84,14 +66,13 @@
 - shoot_days
 - compensation_type
 - compensation_min / compensation_max
-- application_deadline
-- status
+- remaining_slots
 
 ## Application
 
-- role_id
+- recruitment_position_id
 - actor_id
-- source: actor_apply | producer_invite | agent_submit
+- source: actor_apply | crew_invite
 - status
 - submitted_profile_snapshot
 - submitted_media
@@ -108,25 +89,14 @@
 - submitted_at
 - review_status
 
-## CandidateReview
-
-- application_id
-- reviewer_id
-- appearance_score
-- performance_score
-- voice_score
-- role_fit_score
-- comment
-- visibility: private | team
-
 ## Conversation
 
-- project_id
-- role_id
+- recruitment_id
+- recruitment_position_id
 - actor_id
 - participants
 - status
 
 ## Privacy design
 
-演员敏感字段应与公开资料分表或分层存储。身份证件、真实姓名、手机号、合同和收款信息不得进入公共搜索索引。
+身份证件、真实姓名、手机号、合同和收款信息不得进入公共搜索索引。演员公开资料、仅受邀资料和私密资料需要分级存储与访问控制。

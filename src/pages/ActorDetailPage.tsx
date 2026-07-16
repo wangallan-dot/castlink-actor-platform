@@ -1,4 +1,4 @@
-import { ArrowLeft, BadgeCheck, Bookmark, CalendarCheck, Check, Film, Languages, MapPin, MessageCircle, Play, Ruler, Share2, Sparkles } from 'lucide-react';
+import { ArrowLeft, BadgeCheck, Bookmark, CalendarCheck, Check, Film, Languages, MapPin, MessageCircle, Play, Route, Ruler, Share2, Sparkles } from 'lucide-react';
 import { Link, useParams } from 'react-router-dom';
 import { Portrait } from '../components/Portrait';
 import { actors } from '../data';
@@ -29,11 +29,11 @@ export function ActorDetailPage() {
             <span><Ruler size={17} />{actor.height} cm</span>
             <span><CalendarCheck size={17} />可扮演 {actor.playingAge}</span>
             <span><MapPin size={17} />常驻 {actor.city}</span>
-            <span><Languages size={17} />{actor.languages.join(' / ')}</span>
+            <span><Languages size={17} />{actor.languages.join(' / ')}</span><span><Route size={17} />可工作：{actor.workRegions.join(' / ')}</span>
           </div>
           <div className="tag-row profile-tags">{actor.tags.map((tag) => <span className="tag" key={tag}>{tag}</span>)}</div>
           <div className="profile-actions">
-            <button type="button" className="button button-primary"><MessageCircle size={18} />邀请试镜</button>
+            <button type="button" className="button button-primary"><MessageCircle size={18} />选择招募并邀请</button>
             <button type="button" className="button button-secondary" onClick={toggleFavorite}><Bookmark size={18} fill={favorite ? 'currentColor' : 'none'} />{favorite ? '已收藏' : '收藏演员'}</button>
             <button type="button" className="icon-button profile-share" aria-label="分享演员卡"><Share2 size={18} /></button>
           </div>
@@ -84,7 +84,7 @@ export function ActorDetailPage() {
             <div className="skill-list">{actor.languages.map((language) => <span key={language}><Check size={14} />{language}</span>)}</div>
           </section>
           <section className="content-card compact-card contact-card">
-            <span className="eyebrow">项目方操作</span><h3>认为他适合你的角色？</h3><p>发送包含项目、角色、拍摄日期和报酬信息的正式邀请。</p><button type="button" className="button button-primary button-full">发送试镜邀请</button><small>演员平均回复时间：6小时</small>
+            <span className="eyebrow">项目方操作</span><h3>认为他适合你的角色？</h3><p>选择一条正在进行的剧组招募，发送包含拍摄地区、日期和报酬的正式邀请。</p><button type="button" className="button button-primary button-full">选择剧组招募</button><small>演员平均回复时间：6小时</small>
           </section>
         </aside>
       </div>

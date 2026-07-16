@@ -1,28 +1,38 @@
 import {
   BriefcaseBusiness,
   Clapperboard,
+  ClipboardList,
   Home,
   MessageCircleMore,
   Search,
   UserRound,
+  UsersRound,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useIdentity } from '../context/useIdentity';
+import { DiscoveryNav } from './DiscoveryNav';
 import { VersionBadge } from './VersionBadge';
 
 const desktopNavItems = [
-  { to: '/actors', label: '找演员' },
-  { to: '/roles', label: '找角色' },
+  { to: '/recruitments', label: '剧组招募' },
+  { to: '/actors', label: '浏览演员' },
   { to: '/messages', label: '消息' },
-  { to: '/dashboard/producer', label: '选角工作台' },
-  { to: '/dashboard/actor', label: '演员工作台' },
 ];
 
-const mobileTabs = [
+const actorTabs = [
   { to: '/', label: '首页', icon: Home, end: true },
-  { to: '/actors', label: '演员', icon: Search },
-  { to: '/roles', label: '角色', icon: BriefcaseBusiness },
+  { to: '/recruitments', label: '剧组招募', icon: BriefcaseBusiness },
   { to: '/messages', label: '消息', icon: MessageCircleMore, badge: 3 },
+  { to: '/applications', label: '申请', icon: ClipboardList },
+  { to: '/profile/edit', label: '我的', icon: UserRound },
+];
+
+const crewTabs = [
+  { to: '/', label: '首页', icon: Home, end: true },
+  { to: '/actors', label: '演员', icon: UsersRound },
+  { to: '/messages', label: '消息', icon: MessageCircleMore, badge: 3 },
+  { to: '/recruitment/manage', label: '招募管理', icon: ClipboardList },
   { to: '/profile/edit', label: '我的', icon: UserRound },
 ];
 
@@ -30,6 +40,9 @@ export function Layout() {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const { identity, toggleIdentity } = useIdentity();
+  const mobileTabs = identity === 'actor' ? actorTabs : crewTabs;
+  const showDiscoveryNav = ['/', '/actors', '/recruitments', '/roles'].includes(location.pathname);
 
   const submitSearch = (event: React.FormEvent) => {
     event.preventDefault();
@@ -63,22 +76,24 @@ export function Layout() {
             <input
               value={search}
               onChange={(event) => setSearch(event.target.value)}
-              placeholder="搜索演员、城市、角色气质"
-              aria-label="搜索演员"
+              placeholder="搜索演员、地区、招募"
+              aria-label="搜索演员或剧组招募"
             />
           </form>
 
           <div className="header-actions">
+            <button type="button" className="identity-mode-button" onClick={toggleIdentity}>
+              {identity === 'actor' ? '演员端' : '剧组端'}<span>切换</span>
+            </button>
             <Link to="/messages" className="button button-ghost button-small header-message-link">
               <MessageCircleMore size={16} />消息<span className="header-message-count">3</span>
-            </Link>
-            <Link to="/profile/edit" className="button button-ghost button-small">
-              <UserRound size={16} />创建演员卡
             </Link>
           </div>
 
           <div className="mobile-header-actions">
-            <Link to="/actors" className="mobile-header-button" aria-label="搜索演员"><Search size={20} /></Link>
+            <button type="button" className="mobile-identity-button" onClick={toggleIdentity}>
+              {identity === 'actor' ? '演员端' : '剧组端'}
+            </button>
             <Link to="/messages" className="mobile-message-button" aria-label="打开消息中心">
               <MessageCircleMore size={19} />
               <span>消息</span>
@@ -87,6 +102,8 @@ export function Layout() {
           </div>
         </div>
       </header>
+
+      {showDiscoveryNav && <DiscoveryNav />}
 
       <main key={`${location.pathname}${location.search}`} className="page-transition mobile-app-main">
         <Outlet />
@@ -99,34 +116,34 @@ export function Layout() {
               <span className="brand-mark"><Clapperboard size={19} /></span>
               <span className="brand-copy"><strong>幕见</strong><small>CASTLINK</small></span>
             </Link>
-            <p>让演员被专业地展示，让合适的人更快找到合适的角色。</p>
+            <p>演员浏览剧组招募，剧组发现合适演员，双方围绕具体项目直接沟通。</p>
           </div>
           <div>
             <strong>演员</strong>
-            <Link to="/profile/edit">创建演员卡</Link>
-            <Link to="/roles">浏览角色</Link>
+            <Link to="/recruitments">浏览剧组招募</Link>
+            <Link to="/applications">申请与试镜</Link>
             <Link to="/messages">项目沟通</Link>
           </div>
           <div>
-            <strong>项目方</strong>
-            <Link to="/actors">搜索演员</Link>
-            <Link to="/dashboard/producer">选角工作台</Link>
-            <Link to="/messages">候选人沟通</Link>
+            <strong>剧组</strong>
+            <Link to="/actors">浏览演员</Link>
+            <Link to="/recruitment/manage">招募管理</Link>
+            <Link to="/messages">演员沟通</Link>
           </div>
           <div>
             <strong>平台</strong>
-            <span>实名认证</span>
-            <span>项目审核</span>
+            <span>身份认证</span>
+            <span>招募审核</span>
             <span>隐私与安全</span>
           </div>
         </div>
         <div className="container footer-bottom">
           <span>© 2026 CASTLINK MVP</span>
-          <span>当前为产品验证版本，数据均为演示内容</span>
+          <span>当前为产品验证版本，页面数据均为演示内容</span>
         </div>
       </footer>
 
-      <nav className="mobile-bottom-nav" aria-label="移动端主导航">
+      <nav className="mobile-bottom-nav" aria-label={`${identity === 'actor' ? '演员端' : '剧组端'}主导航`}>
         {mobileTabs.map(({ to, label, icon: Icon, end, badge }) => (
           <NavLink
             key={to}

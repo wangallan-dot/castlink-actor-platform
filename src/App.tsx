@@ -1,5 +1,6 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout';
+import { IdentityProvider } from './context/IdentityProvider';
 import { ActorDashboard } from './pages/ActorDashboard';
 import { ActorDetailPage } from './pages/ActorDetailPage';
 import { ActorsPage } from './pages/ActorsPage';
@@ -14,21 +15,27 @@ import './App.css';
 
 export default function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/actors" element={<ActorsPage />} />
-          <Route path="/actors/:actorId" element={<ActorDetailPage />} />
-          <Route path="/roles" element={<RolesPage />} />
-          <Route path="/roles/:roleId" element={<RoleDetailPage />} />
-          <Route path="/messages" element={<MessagesPage />} />
-          <Route path="/dashboard/actor" element={<ActorDashboard />} />
-          <Route path="/dashboard/producer" element={<ProducerDashboard />} />
-          <Route path="/profile/edit" element={<ProfileEditorPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </HashRouter>
+    <IdentityProvider>
+      <HashRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/actors" element={<ActorsPage />} />
+            <Route path="/actors/:actorId" element={<ActorDetailPage />} />
+            <Route path="/recruitments" element={<RolesPage />} />
+            <Route path="/recruitments/:roleId" element={<RoleDetailPage />} />
+            <Route path="/roles" element={<Navigate to="/recruitments" replace />} />
+            <Route path="/roles/:roleId" element={<RoleDetailPage />} />
+            <Route path="/messages" element={<MessagesPage />} />
+            <Route path="/applications" element={<ActorDashboard />} />
+            <Route path="/recruitment/manage" element={<ProducerDashboard />} />
+            <Route path="/dashboard/actor" element={<ActorDashboard />} />
+            <Route path="/dashboard/producer" element={<ProducerDashboard />} />
+            <Route path="/profile/edit" element={<ProfileEditorPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </HashRouter>
+    </IdentityProvider>
   );
 }

@@ -7,7 +7,11 @@ export type Actor = {
   playingAge: string;
   height: number;
   city: string;
+  workRegions: string[];
+  acceptsTravel: boolean;
+  canStayOnSet: boolean;
   availability: string;
+  lastActive: string;
   verified: boolean;
   profileScore: number;
   tagline: string;
@@ -22,13 +26,18 @@ export type Actor = {
   featured?: boolean;
 };
 
-export type Role = {
+export type RecruitmentStatus = 'draft' | 'reviewing' | 'open' | 'closing' | 'closed' | 'completed';
+
+export type Recruitment = {
   id: string;
   title: string;
   project: string;
   projectType: string;
   city: string;
+  district?: string;
   shootDate: string;
+  shootStart: string;
+  shootEnd: string;
   duration: string;
   pay: string;
   ageRange: string;
@@ -40,5 +49,12 @@ export type Role = {
   company: string;
   verified: boolean;
   postedAt: string;
-  urgent?: boolean;
+  publishedAt: string;
+  applicationDeadline: string;
+  acceptsNonLocalActors: boolean;
+  providesAccommodation: boolean;
+  remainingSlots: number;
+  status: RecruitmentStatus;
 };
+
+export type Role = Recruitment;
