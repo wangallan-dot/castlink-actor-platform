@@ -2,6 +2,10 @@
 
 面向演员、选角导演、制片公司与经纪机构的数字演员卡和在线选角协作平台。
 
+## 在线预览
+
+GitHub Pages：`https://wangallan-dot.github.io/castlink-actor-platform/`
+
 当前仓库为 **MVP 0.1**。重点验证以下闭环：
 
 1. 演员建立标准化数字演员卡；
@@ -98,6 +102,7 @@ npm run lint
 - [`docs/DATA_MODEL.md`](docs/DATA_MODEL.md)
 - [`docs/ROADMAP.md`](docs/ROADMAP.md)
 - [`docs/DEVELOPMENT_LOG.md`](docs/DEVELOPMENT_LOG.md)
+- [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 
 ## 产品原则
 
