@@ -1,12 +1,26 @@
 # 幕见 CastLink
 
-面向演员、选角导演、制片公司与经纪机构的数字演员卡和在线选角协作平台。
+面向演员、选角导演、制片公司与经纪机构的 **移动端优先** 数字演员卡和在线选角协作平台。
 
 ## 在线预览
 
 GitHub Pages：`https://wangallan-dot.github.io/castlink-actor-platform/`
 
-当前仓库为 **MVP 0.1**。重点验证以下闭环：
+当前仓库为 **Mobile MVP 0.2**，主设计尺寸为 390 × 844，优先服务演员和项目方在手机上的高频操作。
+
+## 移动端产品结构
+
+- 固定底部五栏导航：首页、演员、角色、工作台、我的
+- 手机安全区适配，兼容全面屏和底部 Home Indicator
+- 演员库双列卡片布局
+- 角色列表单列信息流
+- 手机端底部抽屉筛选
+- 演员详情、角色详情和工作台触控优化
+- PWA 安装模式，可添加到手机主屏幕
+- 轻量离线缓存与独立窗口启动
+- 桌面端仍保留完整选角工作台
+
+## MVP 验证闭环
 
 1. 演员建立标准化数字演员卡；
 2. 项目方按角色条件搜索演员；
@@ -16,7 +30,7 @@ GitHub Pages：`https://wangallan-dot.github.io/castlink-actor-platform/`
 
 ## 当前功能
 
-- 平台首页与双角色入口
+- 移动平台首页与演员、项目方入口
 - 演员数据库
   - 姓名、城市、角色气质、技能关键词搜索
   - 城市、性别、年龄、角色标签、认证状态筛选
@@ -38,7 +52,22 @@ GitHub Pages：`https://wangallan-dot.github.io/castlink-actor-platform/`
   - 基础资料编辑
   - 浏览器 `localStorage` 保存
   - 照片、视频、履历等后续模块入口
-- 响应式布局
+
+## 安装到手机桌面
+
+### iPhone / iPad
+
+1. 使用 Safari 打开在线预览地址；
+2. 点击底部“分享”；
+3. 选择“添加到主屏幕”；
+4. 从桌面点击“幕见”图标启动。
+
+### Android
+
+1. 使用 Chrome 打开在线预览地址；
+2. 点击右上角菜单；
+3. 选择“安装应用”或“添加到主屏幕”；
+4. 从桌面独立启动。
 
 ## 技术栈
 
@@ -48,6 +77,8 @@ GitHub Pages：`https://wangallan-dot.github.io/castlink-actor-platform/`
 - React Router
 - Lucide Icons
 - 原生 CSS 设计系统
+- Web App Manifest
+- Service Worker
 - localStorage 原型数据层
 
 ## 本地运行
