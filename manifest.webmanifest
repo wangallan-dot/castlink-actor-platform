@@ -1,0 +1,21 @@
+{
+  "name": "幕见 CastLink",
+  "short_name": "幕见",
+  "description": "面向演员与影视项目方的移动选角协作平台",
+  "start_url": "./#/",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f4f6f2",
+  "theme_color": "#1d6a50",
+  "lang": "zh-CN",
+  "categories": ["business", "productivity", "entertainment"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
