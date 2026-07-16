@@ -6,3 +6,11 @@ import App from './App';
 createRoot(document.getElementById('root')!).render(
   <StrictMode><App /></StrictMode>,
 );
+
+if ('serviceWorker' in navigator && import.meta.env.PROD) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch((error: unknown) => {
+      console.error('Service worker registration failed:', error);
+    });
+  });
+}
