@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { VersionBadge } from './VersionBadge';
 
 const desktopNavItems = [
   { to: '/actors', label: '找演员' },
@@ -47,6 +48,8 @@ export function Layout() {
               <small>CASTLINK</small>
             </span>
           </Link>
+
+          <VersionBadge />
 
           <nav className="desktop-nav" aria-label="主导航">
             {desktopNavItems.map((item) => (
