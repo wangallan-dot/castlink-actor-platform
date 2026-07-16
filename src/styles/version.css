@@ -1,0 +1,14 @@
+/* Version visibility is loaded last so it can override mobile layout rules. */
+@media (max-width: 820px) {
+  .version-badge code {
+    display: inline;
+    padding-left: 4px;
+    font-size: 7px;
+  }
+}
+
+@media (max-width: 360px) {
+  .version-badge code {
+    display: none;
+  }
+}
