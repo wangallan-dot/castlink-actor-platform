@@ -1,4 +1,4 @@
-const CACHE_NAME = 'castlink-mobile-v5';
+const CACHE_NAME = 'castlink-mobile-v7';
 
 self.addEventListener('install', () => {
   self.skipWaiting();
